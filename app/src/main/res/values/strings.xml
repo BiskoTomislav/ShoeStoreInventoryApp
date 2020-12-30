@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ShoeStore</string>
+    <string name="name_label">Name</string>
+    <string name="password_label">Password</string>
+    <string name="signin">Sign In</string>
+    <string name="signup">Sign Up</string>
+    <string name="welcome_text_title">Welcome %1$s!</string>
+    <string name="welcome_text">"Welcome to the Shoe List app. This app is developed as first milestone project in the Udacity 'Developing Android Apps with Kotlin.' course"
+        "App consists of five screens. After login you are sent to welcome screen and instruction screen. From there you can show shoe list and add new shoes into the list.\n"
+
+    </string>
+    <string name="instruction_text">On the next page you can see all the shoes in your inventory. By pressing on plus button you can add a new shoe into the inventory and it will be shown in the list.</string>
+
+    <string name="shoeNamePlaceholder">Nike</string>
+    <string name="shoe_logo">Shoe logo</string>
+    <string name="next_button_text">Next</string>
+    <string name="instructionTitle_text">Instructions:</string>
+    <string name="name_text">Name:</string>
+    <string name="company_text">Company:</string>
+    <string name="size_textView">Size:</string>
+    <string name="description_text">Description:</string>
+    <string name="add_text">Add</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="showShoeList_button_label">Show shoe list</string>
+</resources>
