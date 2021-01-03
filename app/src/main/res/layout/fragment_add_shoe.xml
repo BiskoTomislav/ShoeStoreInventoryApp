@@ -10,7 +10,12 @@
             name="newShoe"
             type="com.udacity.shoestore.models.Shoe" />
     </data>
+    <!--
+     Using constraint layout to avoid nesting in order to achieve form like arrangement of
+     views where main flow is vertical but views in label-input rows are ordered horizontally.
 
+     Also taking advantage of baseline constraint for positioning of label-input pairs
+     -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

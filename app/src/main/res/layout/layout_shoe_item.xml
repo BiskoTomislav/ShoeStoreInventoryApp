@@ -1,65 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    android:background="#EFEDED"
-    android:orientation="vertical"
-    android:padding="4dp">
-
-    <LinearLayout
+    tools:context=".ShoeListFragment">
+    <!--
+     Using constraint layout to avoid nesting of layouts that would be necessary to achieve the same
+     layout of views with LinearLayout.
+     -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp">
+        android:layout_marginBottom="4dp"
+        android:background="#EFEDED"
+        android:orientation="vertical"
+        android:padding="4dp">
+
 
         <TextView
             android:id="@+id/shoeCompany_textView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Company" />
 
         <TextView
             android:id="@+id/shoeName_textView"
-            android:layout_width="wrap_content"
+            android:layout_width="79dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/shoeCompany_textView"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Name" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:paddingBottom="4dp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
             android:text="@string/size_textView"
+            app:layout_constraintBaseline_toBaselineOf="@+id/shoeSizetextView"
+            app:layout_constraintStart_toStartOf="parent"
             tools:text="@string/size_textView" />
+
 
         <TextView
             android:id="@+id/shoeSizetextView"
-            android:layout_width="wrap_content"
+            android:layout_width="82dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/shoeCompany_textView"
             tools:text="Size" />
-    </LinearLayout>
 
-    <TextView
-        android:id="@+id/shoeDescription_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_weight="1"
-        tools:text="Description" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/shoeDescription_textView"
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="Description" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

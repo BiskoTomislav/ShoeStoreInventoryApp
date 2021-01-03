@@ -41,9 +41,6 @@ class WelcomeFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (R.id.loginFragment == item.itemId) {
-            ShoeApp.logout()
-        }
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }

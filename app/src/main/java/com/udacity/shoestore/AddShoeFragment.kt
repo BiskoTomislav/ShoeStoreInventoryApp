@@ -35,12 +35,14 @@ class AddShoeFragment : Fragment() {
 
             viewModel.addNewItem(newShoe)
 
-            findNavController().navigate(AddShoeFragmentDirections.actionAddShoeFragmentToShoeListFragment())
+            // Use findNavController().navigateUp() instead of creating a new instance of ShoeListFragment.
+            findNavController().navigateUp()
         }
 
 
         binding.cancelButton.setOnClickListener {
-            findNavController().navigate(AddShoeFragmentDirections.actionAddShoeFragmentToShoeListFragment())
+            // Use findNavController().navigateUp() instead of creating a new instance of ShoeListFragment.
+            findNavController().navigateUp()
         }
 
         return binding.root
@@ -52,9 +54,6 @@ class AddShoeFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (R.id.loginFragment == item.itemId) {
-            ShoeApp.logout()
-        }
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }

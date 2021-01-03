@@ -2,18 +2,18 @@ package com.udacity.shoestore
 
 import android.os.Bundle
 import android.view.*
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
-import com.udacity.shoestore.models.NoUser
+import com.udacity.shoestore.databinding.LayoutShoeItemBinding
 import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
+
 
 class ShoeListFragment : Fragment() {
 
@@ -21,16 +21,6 @@ class ShoeListFragment : Fragment() {
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
     private val viewModel: ShoeListViewModel by activityViewModels()
-
-    override fun onResume() {
-        super.onResume()
-        Timber.d("onResume ${findNavController()} with user ${ShoeApp.user}")
-
-        // Jump to login fragment if user is not logged in
-        when (ShoeApp.user) {
-            is NoUser -> findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,9 +33,9 @@ class ShoeListFragment : Fragment() {
 
         // Fill ScrollView with shoe list
         viewModel.shoes.value?.forEach {
-            val view: LinearLayout =
-                inflater.inflate(R.layout.layout_shoe_item, container, false) as LinearLayout
-            addShoeItemLayoutIntoScrollView(view, it)
+            val layoutShoeItemBinding: LayoutShoeItemBinding =
+                DataBindingUtil.inflate(inflater, R.layout.layout_shoe_item, container, false)
+            addShoeItemLayoutIntoScrollView(layoutShoeItemBinding, it)
         }
 
         // Navigation to adding a new shoe
@@ -64,28 +54,27 @@ class ShoeListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (R.id.loginFragment == item.itemId) {
             ShoeApp.logout()
+
+            // Remove shoe list from stack after logout,
+            // otherwise we could return with back button without login.
+            Navigation.findNavController(binding.root).popBackStack(R.id.shoeListFragment, true)
+
         }
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }
 
     private fun addShoeItemLayoutIntoScrollView(
-        view: LinearLayout,
-        it: Shoe
+        layoutShoeItemBinding: LayoutShoeItemBinding,
+        shoe: Shoe
     ) {
-        val nameTextView = view.findViewById<TextView>(R.id.shoeName_textView)
-        nameTextView.text = it.name
+        with(layoutShoeItemBinding) {
+            shoeNameTextView.text = shoe.name
+            shoeCompanyTextView.text = shoe.company
+            shoeSizetextView.text = shoe.size.toString()
+            shoeDescriptionTextView.text = shoe.description
 
-        val companyTextView = view.findViewById<TextView>(R.id.shoeCompany_textView)
-        companyTextView.text = it.company
-
-        val sizeTextView = view.findViewById<TextView>(R.id.shoeSizetextView)
-        Timber.d("Add size: ${it.size.toString()}")
-        sizeTextView.text = it.size.toString()
-
-        val descriptionTextView = view.findViewById<TextView>(R.id.shoeDescription_textView)
-        descriptionTextView.text = it.description
-
-        binding.shoeListLinearLayout.addView(view)
+            binding.shoeListLinearLayout.addView(this.root)
+        }
     }
 }

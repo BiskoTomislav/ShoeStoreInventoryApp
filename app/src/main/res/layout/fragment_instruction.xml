@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".InstructionFragment">
-
+    <!--
+     Using constraint layout for easier Button positioning bottom centrally without nesting it
+     inside another layout with different gravity property.
+     -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <TextView
             android:id="@+id/instructionTitle_textView"

@@ -4,9 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.udacity.shoestore.LoginFragment">
-
+    <!--
+     Although layout here is pretty straight forward and could be achieved with LinearLayout, number
+     of elements is not high (<15) and ConstraintLayout is used for its simplicity and ease of
+     designing in Android Studio layout editor.
+     -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/layout_margin"

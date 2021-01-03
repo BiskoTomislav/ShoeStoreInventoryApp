@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/shoeListFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.udacity.shoestore.LoginFragment"
@@ -24,7 +24,7 @@
             app:destination="@id/instructionFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right"
-            app:popUpTo="@id/loginFragment"
+            app:popUpTo="@id/welcomeFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -38,28 +38,12 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right"
             app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_shoeListFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/addShoeFragment"
         android:name="com.udacity.shoestore.AddShoeFragment"
         android:label="New Shoe"
         tools:layout="@layout/fragment_add_shoe">
-        <action
-            android:id="@+id/action_addShoeFragment_to_shoeListFragment"
-            app:destination="@id/shoeListFragment" />
-        <action
-            android:id="@+id/action_addShoeFragment_to_shoeListFragment2"
-            app:destination="@id/shoeListFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_out"
-            app:popExitAnim="@android:anim/fade_in"
-            app:popUpTo="@id/shoeListFragment" />
     </fragment>
     <fragment
         android:id="@+id/instructionFragment"
@@ -71,7 +55,7 @@
             app:destination="@id/shoeListFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right"
-            app:popUpTo="@id/shoeListFragment"
+            app:popUpTo="@id/instructionFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>
