@@ -68,13 +68,8 @@ class ShoeListFragment : Fragment() {
         layoutShoeItemBinding: LayoutShoeItemBinding,
         shoe: Shoe
     ) {
-        with(layoutShoeItemBinding) {
-            shoeNameTextView.text = shoe.name
-            shoeCompanyTextView.text = shoe.company
-            shoeSizetextView.text = shoe.size.toString()
-            shoeDescriptionTextView.text = shoe.description
+        layoutShoeItemBinding.aShoe = shoe
 
-            binding.shoeListLinearLayout.addView(this.root)
-        }
+        binding.shoeListLinearLayout.addView(layoutShoeItemBinding.root)
     }
 }

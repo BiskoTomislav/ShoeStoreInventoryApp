@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ShoeListFragment">
+    <data>
+        <import type="com.udacity.shoestore.converters.Converter" />
+        <variable
+            name="aShoe"
+            type="com.udacity.shoestore.models.Shoe" />
+    </data>
     <!--
      Using constraint layout to avoid nesting of layouts that would be necessary to achieve the same
      layout of views with LinearLayout.
@@ -10,31 +16,32 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="@dimen/shoe_item_layout_margin"
         android:background="#EFEDED"
         android:orientation="vertical"
-        android:padding="4dp">
-
+        android:padding="@dimen/shoe_item_layout_padding">
 
         <TextView
             android:id="@+id/shoeCompany_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@={aShoe.company}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Company" />
 
         <TextView
             android:id="@+id/shoeName_textView"
-            android:layout_width="79dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@={aShoe.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/shoeCompany_textView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Name" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/sizeLabel_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/size_textView"
@@ -45,18 +52,22 @@
 
         <TextView
             android:id="@+id/shoeSizetextView"
-            android:layout_width="82dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/textView"
+            android:text="@={Converter.fromDouble(aShoe.size)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sizeLabel_textView"
             app:layout_constraintTop_toBottomOf="@+id/shoeCompany_textView"
             tools:text="Size" />
 
         <TextView
             android:id="@+id/shoeDescription_textView"
-            android:layout_width="82dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@={aShoe.description}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/sizeLabel_textView"
             tools:text="Description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

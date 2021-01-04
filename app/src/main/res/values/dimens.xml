@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="layout_margin">20dp</dimen>
+    <dimen name="button_bottom_margin" />
+    <dimen name="button_margin">8dp</dimen>
+    <dimen name="text_size">18sp</dimen>
+    <dimen name="shoe_item_layout_margin" >4dp</dimen>
+    <dimen name="shoe_item_layout_padding" >4dp</dimen>
+    <dimen name="title_text_size">24sp</dimen>
+    <dimen name="divider_margin">12dp</dimen>
+    <dimen name="floating_button_margin">20dp</dimen>
 </resources>

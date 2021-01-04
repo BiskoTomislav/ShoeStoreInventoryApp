@@ -22,4 +22,5 @@
     <string name="add_text">Add</string>
     <string name="cancel_text">Cancel</string>
     <string name="showShoeList_button_label">Show shoe list</string>
+    <string name="add_shoe_button_desc">Add new shoe</string>
 </resources>
